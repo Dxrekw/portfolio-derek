@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Derek Alvarado | Portfolio</title>
+<meta name="description" content="Portfolio of Derek Jassiel Alvarado Rico: multiplatform software development and digital design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070a;--card:#101014;--line:#23232b;--text:#ececf1;--muted:#8d8d99;--accent:#e11d2e}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:300 16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Snow: light layers animated with transform */
+.snow{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.snow::before,.snow::after{content:"";position:absolute;left:0;width:100%;will-change:transform}
+.snow::before{top:-680px;height:calc(100% + 680px);background-image:radial-gradient(2px 2px at 60px 80px,#fff,transparent),radial-gradient(2px 2px at 220px 200px,#fff,transparent),radial-gradient(1.5px 1.5px at 300px 40px,#fff,transparent),radial-gradient(2px 2px at 130px 260px,#fff,transparent),radial-gradient(1.5px 1.5px at 20px 180px,#fff,transparent),radial-gradient(2px 2px at 270px 300px,#fff,transparent),radial-gradient(1.5px 1.5px at 170px 10px,#fff,transparent),radial-gradient(1.5px 1.5px at 330px 150px,#fff,transparent);background-size:340px 340px;opacity:.65;animation:fall1 30s linear infinite}
+.snow::after{top:-1040px;height:calc(100% + 1040px);background-image:radial-gradient(3px 3px at 100px 100px,rgba(255,255,255,.9),transparent),radial-gradient(3px 3px at 380px 300px,rgba(255,255,255,.8),transparent),radial-gradient(3px 3px at 250px 420px,rgba(255,255,255,.85),transparent),radial-gradient(2.5px 2.5px at 460px 60px,rgba(255,255,255,.8),transparent),radial-gradient(3px 3px at 40px 330px,rgba(255,255,255,.8),transparent);background-size:520px 520px;opacity:.5;animation:fall2 50s linear infinite}
+@keyframes fall1{to{transform:translateY(680px)}}
+@keyframes fall2{to{transform:translateY(1040px)}}
+/* Falling name */
+.names{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.names span{position:absolute;top:-60px;font:700 20px "Space Grotesk",sans-serif;color:rgba(255,255,255,.28);letter-spacing:2px;animation:drop 18s linear infinite;will-change:transform}
+.names span:nth-child(1){left:6%;animation-delay:0s}
+.names span:nth-child(2){left:19%;animation-delay:-6s;font-size:15px;animation-duration:22s}
+.names span:nth-child(3){left:33%;animation-delay:-12s;color:rgba(225,29,46,.4)}
+.names span:nth-child(4){left:47%;animation-delay:-3s;font-size:14px;animation-duration:25s}
+.names span:nth-child(5){left:61%;animation-delay:-9s;font-size:24px;animation-duration:20s}
+.names span:nth-child(6){left:74%;animation-delay:-15s;color:rgba(225,29,46,.35);font-size:16px}
+.names span:nth-child(7){left:86%;animation-delay:-1s;animation-duration:23s}
+.names span:nth-child(8){left:93%;animation-delay:-10s;font-size:13px;animation-duration:27s}
+@keyframes drop{to{transform:translateY(115vh) rotate(8deg)}}
+
+/* Navigation */
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 6vw;background:rgba(7,7,10,.94);border-bottom:1px solid var(--line)}
+nav b{font:700 18px "Space Grotesk";letter-spacing:.5px}
+nav b span{color:var(--accent)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--muted)}
+nav a:hover{color:var(--text)}
+
+main,footer{position:relative;z-index:1}
+section{padding:110px 6vw 40px;max-width:1200px;margin:auto}
+.eyebrow{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h2{font-size:clamp(28px,4vw,42px);margin-bottom:12px}
+.lead{color:var(--muted);max-width:640px;margin-bottom:44px}
+
+/* Cover */
+#home{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:100px}
+#home h1{font-size:clamp(40px,8vw,92px);letter-spacing:-2px}
+#home h1 span{background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:clamp(16px,2vw,22px);color:var(--muted);margin:18px 0 30px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.meta span,.tags span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--muted);background:rgba(16,16,20,.8)}
+.btn{display:inline-block;padding:13px 28px;border-radius:999px;background:var(--accent);color:#fff;font-weight:500;margin:0 10px 10px 0;transition:.3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px -8px var(--accent)}
+.btn.ghost{background:transparent;border:1px solid var(--line)}
+.fade{animation:up .9s both}
+.fade:nth-child(2){animation-delay:.15s}.fade:nth-child(3){animation-delay:.3s}.fade:nth-child(4){animation-delay:.45s}.fade:nth-child(5){animation-delay:.6s}
+@keyframes up{from{opacity:0;transform:translateY(26px)}}
+.stats{display:flex;flex-wrap:wrap;gap:40px;margin-top:50px}
+.stats b{display:block;font:700 34px "Space Grotesk";color:#fff}
+.stats small{color:var(--muted);font-size:13px}
+
+/* About */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.about p{margin-bottom:16px;color:#c4c4cd}
+.skills{display:grid;gap:20px;align-content:start}
+.skill div{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.skill small{color:var(--muted)}
+.bar{display:block;height:5px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--accent),#ff7a85);border-radius:9px;animation:grow 1.6s ease both}
+@keyframes grow{from{width:0}}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.sub{font-size:22px;margin:70px 0 24px}
+.timeline{border-left:1px solid var(--line);padding-left:28px;display:grid;gap:28px;max-width:720px}
+.timeline>div{position:relative}
+.timeline>div::before{content:"";position:absolute;left:-34px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--accent)}
+.timeline small{color:var(--accent);font-size:12px;letter-spacing:.15em;text-transform:uppercase}
+.timeline h3{font-size:18px}
+.timeline p{color:var(--muted);font-size:14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.3s}
+.fact:hover{border-color:var(--accent);transform:translateY(-4px)}
+.fact h3{font-size:17px;margin-bottom:8px}
+.fact p{font-size:14px;color:var(--muted)}
+.fact ul{list-style:none;margin-top:10px;font-size:14px;color:var(--muted)}
+.fact li{padding-left:16px;position:relative;margin-bottom:4px}
+.fact li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.goals{margin-top:22px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:16px;padding:28px}
+.goals h3{font-size:20px;margin-bottom:10px}
+.goals p{color:#c4c4cd;margin-bottom:12px}
+
+/* Projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.4s}
+.card:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 18px 50px -20px var(--accent)}
+.card .pic{aspect-ratio:16/10;overflow:hidden;background:#000;border-bottom:2px solid var(--accent)}
+.card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .pic img{transform:scale(1.07)}
+.card .txt{padding:22px}
+.card .kind{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:20px;margin:6px 0 8px}
+.card p{font-size:14px;color:var(--muted)}
+.card .note{margin-top:12px;font-size:12px;color:#6d6d79;border-top:1px dashed var(--line);padding-top:10px}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.step b{font:700 32px "Space Grotesk";color:var(--accent)}
+
+/* Contact */
+#contact{text-align:center;padding-bottom:90px}
+.links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.links a{border:1px solid var(--line);padding:11px 22px;border-radius:999px;transition:.3s;background:rgba(16,16,20,.8)}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+footer{text-align:center;padding:26px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+@media(max-width:780px){nav ul{gap:14px;font-size:12px}.about{grid-template-columns:1fr}section{padding-top:90px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="snow"></div>
+<div class="names" aria-hidden="true"><span>Derek</span><span>Derek</span><span>Derek</span><span>Derek</span><span>Derek</span><span>Derek</span><span>Derek</span><span>Derek</span></div>
+
+<nav>
+  <b>D<span>.</span>Alvarado</b>
+  <ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav>
+
+<main>
+<!-- COVER -->
+<section id="home">
+  <p class="eyebrow fade">Digital portfolio · Digital Images</p>
+  <h1 class="fade">Derek Jassiel<br><span>Alvarado Rico</span></h1>
+  <p class="role fade">Multiplatform Software Development · Digital Design</p>
+  <div class="meta fade">
+    <span>ICT Engineering · 3rd term</span>
+    <span>Universidad Tecnológica de Tijuana (UTT)</span>
+    <span>Group: 3D</span>
+    <span>Course: Digital Images</span>
+    <span>Professor: Yakko Miguel Olivo Najera</span>
+  </div>
+  <div class="fade"><a class="btn" href="#portfolio">View projects</a><a class="btn ghost" href="#contact">Contact me</a></div>
+  <div class="stats fade">
+    <div><b>8</b><small>Featured projects</small></div>
+    <div><b>3</b><small>Web projects</small></div>
+    <div><b>5</b><small>Design pieces</small></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="eyebrow">About me</p>
+  <h2>From my first code to design with purpose</h2>
+  <p class="lead">I am 19 years old and I study Information and Communication Technologies (ICT) Engineering, specializing in multiplatform software development.</p>
+  <div class="about">
+    <div>
+      <p>My first real contact with code was at high school (Cobach), where I built a supplements website in HTML and CSS. I enjoyed it so much that I decided to study programming.</p>
+      <p>Since high school I have used Canva almost every day: I designed covers and magazines, and I even sold some of them. Today I combine both worlds: code to build, and design to communicate.</p>
+      <p>I am interested in web development, user interface design, editorial design and ideas related to fitness and well-being.</p>
+      <div class="tags"><span>Web development</span><span>UI / UX</span><span>Editorial design</span><span>Fitness</span><span>Python</span></div>
+    </div>
+    <div class="skills">
+      <div class="skill"><div>Canva <small>Advanced</small></div><span class="bar"><i style="--w:90%"></i></span></div>
+      <div class="skill"><div>Python <small>Basic–intermediate</small></div><span class="bar"><i style="--w:55%"></i></span></div>
+      <div class="skill"><div>HTML &amp; CSS <small>Intermediate</small></div><span class="bar"><i style="--w:60%"></i></span></div>
+      <div class="skill"><div>WordPress + Elementor <small>Basic</small></div><span class="bar"><i style="--w:45%"></i></span></div>
+      <div class="skill"><div>Photoshop <small>Basic</small></div><span class="bar"><i style="--w:35%"></i></span></div>
+      <div class="skill"><div>Illustrator <small>Basic</small></div><span class="bar"><i style="--w:30%"></i></span></div>
+      <div class="skill"><div>Light editing <small>Photo and video</small></div><span class="bar"><i style="--w:40%"></i></span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">My journey</h3>
+  <div class="timeline">
+    <div><small>High school · Cobach</small><h3>My first website</h3><p>I built a supplements page in HTML and CSS. It was my first real experience with code and the reason I chose my career.</p></div>
+    <div><small>High school</small><h3>Design in Canva</h3><p>I started designing covers and magazines, and I sold some of them. There I learned about hierarchy, typography and visual order.</p></div>
+    <div><small>UTT</small><h3>ICT Engineering</h3><p>I rebuilt my supplements page with WordPress and Elementor, with a much better design, and started working with Python and databases.</p></div>
+    <div><small>Currently</small><h3>3rd term · Group 3D</h3><p>I am specializing in multiplatform software development and I keep mixing code and design in my projects.</p></div>
+  </div>
+
+  <h3 class="sub">How I work</h3>
+  <div class="facts">
+    <div class="fact"><h3>Clean, intentional work</h3><p>I prefer clean designs without excess. Every element needs a reason, and I check spelling, alignment and consistency before delivering.</p></div>
+    <div class="fact"><h3>Ethics first</h3><p>I give credit to sources, respect other people's work and privacy, and say clearly when a project is academic or fictional.</p></div>
+    <div class="fact"><h3>Open to feedback</h3><p>I listen, iterate and improve. I know I will design for other people, not only in my own style.</p></div>
+  </div>
+
+  <h3 class="sub">What I am learning</h3>
+  <div class="facts">
+    <div class="fact"><h3>Python &amp; OOP</h3><p>Programming with Python and Object-Oriented Programming (OOP): classes, objects and organized code.</p></div>
+    <div class="fact"><h3>Databases</h3><p>Designing data models, entity-relationship diagrams and data dictionaries.</p></div>
+    <div class="fact"><h3>Responsible use of AI</h3><p>Writing good prompts and using AI as a support tool, always checking and understanding the results.</p></div>
+    <div class="fact"><h3>New technologies</h3><p>Tools like Stitch, and WordPress with its plugins (Elementor, WooCommerce) to prototype faster.</p></div>
+  </div>
+
+  <h3 class="sub">My goals</h3>
+  <div class="goals">
+    <h3>To be an efficient programmer who adapts</h3>
+    <p>My goal is to become an efficient programmer who adapts to people's needs and to new technologies, always with ethics, good frontend design and a clean, organized, high-quality backend.</p>
+    <p>I want to build software that is useful, easy to use and responsible: something that solves a real problem and works well on any device.</p>
+    <ul class="fact" style="border:0;padding:0;background:none"><li>Frontend with careful, modern and accessible design</li><li>Backend that is ordered, secure and maintainable</li><li>Constant learning of new tools and technologies</li><li>Ethical decisions in every project</li></ul>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="eyebrow">Services</p>
+  <h2>What I can do for you</h2>
+  <p class="lead">I am a student, so my work is still growing, but I take every project seriously.</p>
+  <div class="facts">
+    <div class="fact"><h3>Web design &amp; development</h3><p>Responsive websites with HTML, CSS and WordPress with Elementor.</p></div>
+    <div class="fact"><h3>Graphic &amp; editorial design</h3><p>Covers, presentations, infographics and magazines made in Canva.</p></div>
+    <div class="fact"><h3>Wireframes &amp; prototypes</h3><p>Early screen sketches for websites and apps, to test ideas before building.</p></div>
+    <div class="fact"><h3>Python projects</h3><p>Small programs and exercises with Python and object-oriented design.</p></div>
+  </div>
+
+  <h3 class="sub">My design process</h3>
+  <div class="steps">
+    <div class="fact step"><b>01</b><h3>Understand</h3><p>Define the problem and who the design is for.</p></div>
+    <div class="fact step"><b>02</b><h3>Sketch</h3><p>Plan the structure with wireframes and references.</p></div>
+    <div class="fact step"><b>03</b><h3>Build</h3><p>Design and develop with a consistent style.</p></div>
+    <div class="fact step"><b>04</b><h3>Review</h3><p>Check details, get feedback and improve.</p></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <p class="eyebrow">Portfolio</p>
+  <h2>Selected projects</h2>
+  <p class="lead">All of them are academic or personal projects. None was made for a real client.</p>
+  <div class="grid">
+    <article class="card" style="--accent:#e11d2e">
+      <div class="pic"><img src="img/suplementos-web-html-css.jpg" alt="D&J Fitness supplements website built with HTML and CSS" loading="lazy"></div>
+      <div class="txt"><span class="kind">Web · HTML &amp; CSS</span><h3>D&amp;J Fitness: first version</h3>
+      <p>A supplements website made in high school, my first real practice with code. It solves how to present routines, prices, nutrition and supplements in one place.</p>
+      <p class="note">Personal and academic project (fictional).</p></div>
+    </article>
+    <article class="card" style="--accent:#e11d2e">
+      <div class="pic"><img src="img/dj-fitness-home-wordpress.jpg" alt="D&J Fitness Home page redesign in WordPress" loading="lazy"></div>
+      <div class="txt"><span class="kind">Web · WordPress + Elementor</span><h3>D&amp;J Fitness: Home</h3>
+      <p>A redesign of the main page with clearer visual hierarchy, highlighted statistics and a text effect with incremental animation.</p>
+      <p class="note">Individual university activity (fictional).</p></div>
+    </article>
+    <article class="card" style="--accent:#ff7a00">
+      <div class="pic"><img src="img/dj-fitness-shop-wordpress.jpg" alt="D&J Fitness shop redesign with WooCommerce" loading="lazy"></div>
+      <div class="txt"><span class="kind">Web · WooCommerce</span><h3>D&amp;J Fitness: Shop</h3>
+      <p>An online store with an interactive menu based on WooCommerce tags, so users can filter accessories, clothes or sneakers without leaving the page.</p>
+      <p class="note">Individual university activity (fictional).</p></div>
+    </article>
+    <article class="card" style="--accent:#e6e6ee">
+      <div class="pic"><img src="img/portada-digital-images.jpg" alt="Digital Images presentation cover with wireframes" loading="lazy"></div>
+      <div class="txt"><span class="kind">Presentation · Canva</span><h3>Digital Images: wireframes</h3>
+      <p>Cover for a presentation of wireframes for a gym, supplementation and healthy eating app. It aims for a clean black and white contrast.</p>
+      <p class="note">Academic project.</p></div>
+    </article>
+    <article class="card" style="--accent:#8f9bb3">
+      <div class="pic"><img src="img/portada-nova-market.jpg" alt="Cover of the Nova Market final project" loading="lazy"></div>
+      <div class="txt"><span class="kind">Presentation · Canva</span><h3>Nova Market</h3>
+      <p>Cover of a final project about financial and operational simulation, made as a team. A space theme conveys innovation and scale.</p>
+      <p class="note">Academic team project (fictional company).</p></div>
+    </article>
+    <article class="card" style="--accent:#d9d9d9">
+      <div class="pic"><img src="img/portada-ser-humano.jpg" alt="Cover: Human Being, nature and evolution" loading="lazy"></div>
+      <div class="txt"><span class="kind">Cover · Canva</span><h3>Human Being</h3>
+      <p>Cover for a presentation about the nature and evolution of the human being. Large condensed typography and a silhouette as the focal point.</p>
+      <p class="note">Academic project.</p></div>
+    </article>
+    <article class="card" style="--accent:#0f8f84">
+      <div class="pic"><img src="img/dimensiones-del-ser.jpg" alt="Infographic: The dimensions of the human being" loading="lazy"></div>
+      <div class="txt"><span class="kind">Infographic · Canva</span><h3>The dimensions of the being</h3>
+      <p>A visual explanation of the biological, psychological, social and spiritual dimensions, using a circle divided in four parts and simple icons.</p>
+      <p class="note">Academic project.</p></div>
+    </article>
+    <article class="card" style="--accent:#ff5c8a">
+      <div class="pic"><img src="img/fanzine-gatos.jpg" alt="Cover and index of the fanzine All About Cats" loading="lazy"></div>
+      <div class="txt"><span class="kind">Editorial · Canva</span><h3>Fanzine: All about cats</h3>
+      <p>Cover and index of a fanzine with 21 sections. The challenge: organizing a lot of content with a clear typographic hierarchy.</p>
+      <p class="note">School project (Group 604, April 2025).</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="eyebrow">Contact</p>
+  <h2>Thanks for viewing!</h2>
+  <p class="lead" style="margin:0 auto">Let's work together. If you have an idea, a project or an opportunity, write to me.</p>
+  <div class="links">
+    <a href="mailto:dxrek80@gmail.com">dxrek80@gmail.com</a>
+    <a href="https://www.instagram.com/dxreekz/" target="_blank" rel="noopener">Instagram · @dxreekz</a>
+    <a href="https://github.com/dxrekw" target="_blank" rel="noopener">GitHub · dxrekw</a>
+    <a href="https://dxrekw.github.io/index.html" target="_blank" rel="noopener">My first website</a>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Derek Jassiel Alvarado Rico · UTT · Digital Images · Prof. Yakko Miguel Olivo Najera</footer>
+</body>
+</html>
